@@ -37,5 +37,5 @@ with app.app_context():
     db.session.add_all(pizzas)
     db.session.add_all(restaurantPizzas)
     db.session.commit()
-
+                   
     print("Seeding done!")
