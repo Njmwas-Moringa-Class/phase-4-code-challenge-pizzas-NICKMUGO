@@ -68,8 +68,8 @@ class RestaurantPizza(db.Model, SerializerMixin):
     restaurant_id = db.Column(db.Integer, ForeignKey('restaurants.id'))
     pizza_id = db.Column(db.Integer, ForeignKey('pizzas.id'))
 
-    restaurant = relationship('Restaurant', back_populates='restaurant_pizzas')
-    pizza = relationship('Pizza', back_populates='restaurant_pizzas')
+    restaurant = db.relationship('Restaurant', back_populates='restaurant_pizzas')
+    pizza = db.relationship('Pizza', back_populates='restaurant_pizzas')
 
     @validates('price')
     def validate_price(self, key, price):
