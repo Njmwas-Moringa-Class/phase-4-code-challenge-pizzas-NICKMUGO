@@ -23,7 +23,7 @@ db.init_app(app)
 @app.route('/')
 def index():
     return '<h1>Code challenge</h1>'
-@app.route('/restaurant', methods=['GET'])
+@app.route('/restaurants', methods=['GET'])
 def getRestaurants():
     restaurants=Restaurant.query.all()
     restaurants_to_dict=[restaurant.to_dict(include_pizzas=True) for  restaurant in restaurants ]
@@ -31,7 +31,7 @@ def getRestaurants():
 
     return response
 
-@app.route('/restaurant/<int:id>', methods=['GET'])
+@app.route('/restaurants/<int:id>', methods=['GET'])
 def getById(id):
     restaurant=Restaurant.query.filter_by(id = id).first()
     if restaurant :
@@ -39,7 +39,7 @@ def getById(id):
     else:
         return jsonify({'error':'Restaurant not found'}) ,404
 
-@app.route('/restaurant/<int:id>' ,methods=['DELETE'])
+@app.route('/restaurants/<int:id>' ,methods=['DELETE'])
 def delete(id):
     restaurant=Restaurant.query.filter_by(id =Restaurant.id).first()
     if restaurant :
